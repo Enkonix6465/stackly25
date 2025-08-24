@@ -10,7 +10,6 @@ const menuSections = [
   {
     title: "How Online Ordering Works",
     desc: "Order your favorite dishes in just a few clicks and enjoy fast, contactless delivery.",
-    icon: "/online-order.svg",
     content: (
       <div className="w-full flex flex-col items-center">
         <div className="relative w-full max-w-2xl mx-auto py-8">
@@ -18,22 +17,22 @@ const menuSections = [
           <div className="relative z-10 flex flex-col gap-0">
             {[
               {
-                icon: "/menu.svg",
+                icon: "https://www.svgrepo.com/show/277641/menu.svg",
                 label: "Browse Menu",
                 desc: "Explore our delicious offerings",
               },
               {
-                icon: "/cart.svg",
+                icon: "https://www.reshot.com/preview-assets/icons/X2KCAR3VEN/full-cart-X2KCAR3VEN.svg",
                 label: "Add to Cart",
                 desc: "Select your favorites and customize",
               },
               {
-                icon: "/payment.svg",
+                icon: "https://www.svgrepo.com/show/439256/payment-request-api.svg",
                 label: "Checkout",
                 desc: "Secure online payment options",
               },
               {
-                icon: "/delivery.svg",
+                icon: "https://www.svgrepo.com/show/270276/delivery-truck-deliver.svg",
                 label: "Track & Enjoy",
                 desc: "Real-time order tracking and fast delivery",
               },
@@ -91,7 +90,7 @@ const menuSections = [
   {
     title: "Menu Categories",
     desc: "Discover a variety of cuisines and dishes to satisfy every craving.",
-    icon: "/menu.svg",
+
     content: (
       <div className="flex flex-wrap gap-8 justify-center items-center py-4">
         {[
@@ -142,7 +141,7 @@ const menuSections = [
   {
     title: "Featured Dishes",
     desc: "Our chef’s top picks, loved by customers and perfect for any occasion.",
-    icon: "/chef-hat.svg",
+
     content: (
       <div className="flex flex-wrap gap-8 justify-center items-center py-4">
         {[
@@ -193,13 +192,13 @@ const menuSections = [
   {
     title: "Why Order Online?",
     desc: "Enjoy exclusive benefits and a hassle-free experience when you order from our online menu.",
-    icon: "/success.svg",
+
     content: (
       <ul className="flex flex-col gap-4 text-zinc-700 dark:text-zinc-200 text-left max-w-xl mx-auto">
         <li className="flex items-center gap-3">
           <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-orange-200 to-yellow-200 dark:from-yellow-900 dark:to-yellow-700">
             <Image
-              src="/clock.svg"
+              src="https://www.svgrepo.com/show/489958/clock-time.svg"
               alt="Quick Delivery"
               width={20}
               height={20}
@@ -210,7 +209,7 @@ const menuSections = [
         <li className="flex items-center gap-3">
           <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-orange-200 to-yellow-200 dark:from-yellow-900 dark:to-yellow-700">
             <Image
-              src="/discount.svg"
+              src="https://www.svgrepo.com/show/268998/discount-star.svg"
               alt="Exclusive Offers"
               width={20}
               height={20}
@@ -221,7 +220,7 @@ const menuSections = [
         <li className="flex items-center gap-3">
           <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-orange-200 to-yellow-200 dark:from-yellow-900 dark:to-yellow-700">
             <Image
-              src="/payment.svg"
+              src="https://www.svgrepo.com/show/439256/payment-request-api.svg"
               alt="Secure Payment"
               width={20}
               height={20}
@@ -231,7 +230,12 @@ const menuSections = [
         </li>
         <li className="flex items-center gap-3">
           <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-orange-200 to-yellow-200 dark:from-yellow-900 dark:to-yellow-700">
-            <Image src="/support.svg" alt="Support" width={20} height={20} />
+            <Image
+              src="https://www.svgrepo.com/show/428775/support-online-center.svg"
+              alt="Support"
+              width={20}
+              height={20}
+            />
           </span>
           24/7 customer support for your orders
         </li>
@@ -242,7 +246,7 @@ const menuSections = [
   {
     title: "Customer Reviews",
     desc: "See what our happy customers are saying about their online ordering experience.",
-    icon: "/user1.jpg",
+
     content: (
       <div className="flex flex-wrap gap-6 justify-center">
         {[
@@ -250,23 +254,23 @@ const menuSections = [
             name: "Rohit S.",
             feedback:
               "Ordering online was so easy and the food arrived hot and fresh!",
-            img: "/user1.jpg",
+            img: "/user2.jpg",
           },
           {
             name: "Neha T.",
             feedback:
               "Loved the variety and the quick delivery. Will order again!",
-            img: "/user2.jpg",
+            img: "/user1.jpg",
           },
           {
             name: "Arjun M.",
             feedback: "Great offers and the checkout process was smooth.",
-            img: "/user3.jpg",
+            img: "/user4.jpg",
           },
           {
             name: "Simran P.",
             feedback: "Customer support was very helpful with my order.",
-            img: "/user4.jpg",
+            img: "/user3.jpg",
           },
         ].map((item) => (
           <div
@@ -278,7 +282,7 @@ const menuSections = [
               alt={item.name}
               width={48}
               height={48}
-              className="rounded-full mb-2"
+              className="rounded-full w-15 h-15 object-cover object-top mb-2"
             />
             <span className="italic text-zinc-700 dark:text-zinc-200 text-sm mb-1">
               “{item.feedback}”
@@ -295,7 +299,7 @@ const menuSections = [
   {
     title: "Ready to Order?",
     desc: "Browse our menu and place your order for a delicious meal delivered to your door!",
-    icon: "/cart.svg",
+
     content: (
       <div
         className="w-full flex flex-col items-center justify-center py-8"
@@ -339,10 +343,9 @@ const OnlineMenu = () => {
             loop
             muted
             playsInline
-             
-            className="absolute inset-0 w-full h-full object-cover z-0 brightness-95 dark:brightness-60 contrast-110 dark:contrast-90 pointer-events-none"
+            className="absolute inset-0 w-full h-full object-cover z-0   opacity-20 dark:brightness-60     pointer-events-none"
           >
-            <source src="/ " type="video/mp4" />
+            <source src="/online-menu-bg.mp4" type="video/mp4" />
             {/* Fallback for browsers that don't support the video tag */}
             Your browser does not support the video tag.
           </video>
@@ -378,15 +381,8 @@ const OnlineMenu = () => {
             key={i}
             className="py-14 px-4   mx-auto flex flex-col items-center text-center gap-6"
           >
-            {sec.icon && (
+            {sec.title && (
               <div className="flex flex-col items-center mb-4">
-                <Image
-                  src={sec?.icon}
-                  alt={sec?.title}
-                  width={56}
-                  height={56}
-                  className="mb-2"
-                />
                 <h2 className="text-2xl md:text-3xl font-bold text-orange-600 dark:text-yellow-400 mb-2 drop-shadow-lg">
                   {sec?.title}
                 </h2>

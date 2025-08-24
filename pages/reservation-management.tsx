@@ -218,7 +218,7 @@ const reservationSections = [
               alt={item.name}
               width={48}
               height={48}
-              className="rounded-full mb-2"
+              className="rounded-full w-15 h-15 object-cover object-top mb-2"
             />
             <span className="italic text-zinc-700 dark:text-zinc-200 text-sm mb-1">
               “{item.feedback}”
