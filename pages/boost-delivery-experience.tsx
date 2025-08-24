@@ -29,7 +29,7 @@ const BoostDeliveryExperience = () => {
           </div>
           <div className="flex-1 flex w-full md:w-[70%] h-auto justify-center z-10">
             <Image
-              src="/boost-delivery-hero.jpg"
+              src="/blog1.jpg"
               alt="Boost Delivery Experience"
               width={420}
               height={320}

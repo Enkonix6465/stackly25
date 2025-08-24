@@ -10,7 +10,7 @@ const partySections = [
   {
     title: "How to Place a Party Order",
     desc: "Make your next celebration effortless with our easy party ordering process.",
-    icon: "/party.svg",
+
     content: (
       <div className="w-full flex flex-col items-center">
         <div className="relative w-full max-w-2xl mx-auto py-8">
@@ -18,22 +18,22 @@ const partySections = [
           <div className="relative z-10 flex flex-col gap-0">
             {[
               {
-                icon: "/inquiry.svg",
+                icon: "https://www.svgrepo.com/show/475335/performance-inquiry.svg",
                 label: "Send Inquiry",
                 desc: "Share your party details and preferences",
               },
               {
-                icon: "/menu.svg",
+                icon: "https://www.svgrepo.com/show/277641/menu.svg",
                 label: "Customize Menu",
                 desc: "Select dishes and quantities for your guests",
               },
               {
-                icon: "/planning.svg",
+                icon: "https://www.svgrepo.com/show/291483/calendar.svg",
                 label: "Confirm & Schedule",
                 desc: "Finalize your order and delivery timing",
               },
               {
-                icon: "/delivery.svg",
+                icon: "https://www.svgrepo.com/show/397715/partying-face.svg",
                 label: "Enjoy the Party",
                 desc: "We deliver, set up, and you celebrate!",
               },
@@ -42,7 +42,11 @@ const partySections = [
               return (
                 <div
                   key={step.label}
-                  className={`relative flex w-full justify-${isLeft ? "start" : "end"} md:justify-${isLeft ? "start" : "end"} max-[495px]:justify-center max-[495px]:my-4 group`}
+                  className={`relative flex w-full justify-${
+                    isLeft ? "start" : "end"
+                  } md:justify-${
+                    isLeft ? "start" : "end"
+                  } max-[495px]:justify-center max-[495px]:my-4 group`}
                   style={{
                     animationDelay: `${0.1 + idx * 0.12}s`,
                     animationDuration: "1.1s",
@@ -52,7 +56,11 @@ const partySections = [
                     <span className="absolute left-1/2 top-0 w-1 h-10 bg-gradient-to-b from-orange-300 via-yellow-200 to-orange-200 dark:from-yellow-800 dark:via-yellow-700 dark:to-yellow-900 opacity-70 z-0 -translate-x-1/2 animate-pulse" />
                   )}
                   <div
-                    className={`relative bg-white/80 dark:bg-zinc-900/80 rounded-2xl shadow-2xl border-4 border-orange-100 dark:border-yellow-900 px-6 py-6 min-w-[220px] max-w-xs flex flex-col items-center gap-2 backdrop-blur-lg transition-transform duration-300 group-hover:scale-105 ${isLeft ? "ml-0 md:-ml-32 md:self-start" : "mr-0 md:-mr-32 md:self-end"}`}
+                    className={`relative bg-white/80 dark:bg-zinc-900/80 rounded-2xl shadow-2xl border-4 border-orange-100 dark:border-yellow-900 px-6 py-6 min-w-[220px] max-w-xs flex flex-col items-center gap-2 backdrop-blur-lg transition-transform duration-300 group-hover:scale-105 ${
+                      isLeft
+                        ? "ml-0 md:-ml-32 md:self-start"
+                        : "mr-0 md:-mr-32 md:self-end"
+                    }`}
                   >
                     <div className="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-br from-orange-100 to-yellow-200 dark:from-yellow-900 dark:to-yellow-700 shadow-lg border-2 border-orange-200 dark:border-yellow-800 mb-2 relative animate-bounce-slow">
                       <Image
@@ -83,7 +91,7 @@ const partySections = [
   {
     title: "Party Menu Options",
     desc: "Choose from a variety of party platters and packages to suit your celebration.",
-    icon: "/menu.svg",
+
     content: (
       <div className="flex flex-wrap gap-8 justify-center items-center py-4">
         {[
@@ -134,13 +142,13 @@ const partySections = [
   {
     title: "Why Choose Party Orders?",
     desc: "Enjoy exclusive benefits and a stress-free experience when you order for your party with us.",
-    icon: "/success.svg",
+
     content: (
       <ul className="flex flex-col gap-4 text-zinc-700 dark:text-zinc-200 text-left max-w-xl mx-auto">
         <li className="flex items-center gap-3">
           <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-orange-200 to-yellow-200 dark:from-yellow-900 dark:to-yellow-700">
             <Image
-              src="/clock.svg"
+              src="https://www.svgrepo.com/show/520498/clock.svg"
               alt="On-Time Delivery"
               width={20}
               height={20}
@@ -151,7 +159,7 @@ const partySections = [
         <li className="flex items-center gap-3">
           <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-orange-200 to-yellow-200 dark:from-yellow-900 dark:to-yellow-700">
             <Image
-              src="/chef-hat.svg"
+              src="https://www.svgrepo.com/show/336953/chef-hat-one.svg"
               alt="Expert Chefs"
               width={20}
               height={20}
@@ -161,14 +169,19 @@ const partySections = [
         </li>
         <li className="flex items-center gap-3">
           <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-orange-200 to-yellow-200 dark:from-yellow-900 dark:to-yellow-700">
-            <Image src="/support.svg" alt="Support" width={20} height={20} />
+            <Image
+              src="https://www.svgrepo.com/show/428775/support-online-center.svg"
+              alt="Support"
+              width={20}
+              height={20}
+            />
           </span>
           Dedicated support for your event
         </li>
         <li className="flex items-center gap-3">
           <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-orange-200 to-yellow-200 dark:from-yellow-900 dark:to-yellow-700">
             <Image
-              src="/discount.svg"
+              src="https://www.svgrepo.com/show/268998/discount-star.svg"
               alt="Special Offers"
               width={20}
               height={20}
@@ -183,7 +196,7 @@ const partySections = [
   {
     title: "Party Success Stories",
     desc: "See what our customers are saying about their party order experience.",
-    icon: "/user1.jpg",
+
     content: (
       <div className="flex flex-wrap gap-6 justify-center">
         {[
@@ -191,25 +204,25 @@ const partySections = [
             name: "Karan D.",
             feedback:
               "The food was a hit at our birthday party! Everything was fresh and delicious.",
-            img: "/user1.jpg",
+            img: "/user2.jpg",
           },
           {
             name: "Priya S.",
             feedback:
               "Loved the variety and the setup was so professional. Highly recommend!",
-            img: "/user2.jpg",
+            img: "/user1.jpg",
           },
           {
             name: "Amit R.",
             feedback:
               "Ordering for our office party was seamless and the team was very helpful.",
-            img: "/user3.jpg",
+            img: "/user4.jpg",
           },
           {
             name: "Meena T.",
             feedback:
               "Great service and tasty food. Will definitely order again for our next event!",
-            img: "/user4.jpg",
+            img: "/user3.jpg",
           },
         ].map((item) => (
           <div
@@ -238,7 +251,7 @@ const partySections = [
   {
     title: "Book Your Party Order!",
     desc: "Let us handle the food so you can enjoy the celebration. Get a custom quote for your party today!",
-    icon: "/calendar.svg",
+    // icon: "/calendar.svg",
     content: (
       <div
         className="w-full flex flex-col items-center justify-center py-8"
@@ -277,6 +290,18 @@ const PartyOrders = () => {
         <Headder />
         {/* Hero Section */}
         <section className="relative flex flex-col-reverse md:flex-row items-center justify-between px-4 py-16 md:py-24 mx-auto gap-8 min-h-[100vh]">
+          {/* Background Video */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-15 rounded-none"
+            style={{ objectFit: "cover" }}
+          >
+            <source src="/party-orders-hero-bg.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
           <div className="flex-1 text-center md:text-left z-10">
             <h1 className="text-4xl md:text-6xl font-extrabold text-orange-600 dark:text-yellow-400 mb-4 drop-shadow-lg">
               Party Orders Made Easy
@@ -310,15 +335,8 @@ const PartyOrders = () => {
             key={i}
             className="py-14 px-4   mx-auto flex flex-col items-center text-center gap-6"
           >
-            {sec.icon && (
+            {sec.title && (
               <div className="flex flex-col items-center mb-4">
-                <Image
-                  src={sec?.icon}
-                  alt={sec?.title}
-                  width={56}
-                  height={56}
-                  className="mb-2"
-                />
                 <h2 className="text-2xl md:text-3xl font-bold text-orange-600 dark:text-yellow-400 mb-2 drop-shadow-lg">
                   {sec?.title}
                 </h2>

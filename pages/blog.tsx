@@ -70,9 +70,9 @@ export default function Blog() {
         </div>
         <div className="flex-1 flex justify-center items-center z-20">
           <Image
-            src="/blog-hero-illus.svg"
+            src="/blog-hero-illus.png"
             alt="Blog Hero"
-            className="w-full max-w-xs md:max-w-md rounded-2xl shadow-xl h-[350px] object-center object-cover "
+            className="w-full max-w-xs md:max-w-md rounded-2xl shadow-xl h-[350px]   "
             data-aos="zoom-in"
             style={{ animationDelay: "0.5s", animationDuration: "1.2s" }}
             width={350}
@@ -138,7 +138,7 @@ export default function Blog() {
           <div className="flex-shrink-0 flex flex-col items-center justify-center">
             <span className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-orange-200 to-yellow-300 dark:from-yellow-900 dark:to-yellow-700 shadow-lg border-4 border-orange-100 dark:border-yellow-800">
               <Image
-                src="/blog-about-icon.svg"
+                src="https://www.svgrepo.com/show/343850/blog-seo-optimization-search.svg"
                 alt="About Blog"
                 width={48}
                 height={48}
@@ -177,7 +177,7 @@ export default function Blog() {
             {/* Floating icon */}
             <span className="absolute -top-0 left-5 bg-gradient-to-br from-orange-400 to-yellow-400 dark:from-yellow-800 dark:to-yellow-600 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white dark:border-zinc-900 animate-bounce-slow">
               <Image
-                src="/delivery-partner-icon.svg"
+                src="https://www.svgrepo.com/show/298764/delivery-man-driver.svg"
                 alt="Delivery Partner"
                 width={36}
                 height={36}
@@ -199,7 +199,7 @@ export default function Blog() {
             {/* Floating icon */}
             <span className="absolute -top-0 left-5 bg-gradient-to-br from-yellow-400 to-orange-400 dark:from-yellow-700 dark:to-orange-700 w-16 h-16 flex items-center justify-center rounded-full shadow-lg border-4 border-white dark:border-zinc-900 animate-bounce-slow">
               <Image
-                src="/marketing-icon.svg"
+                src="https://www.svgrepo.com/show/428772/marketing-market-social.svg"
                 alt="Marketing"
                 width={36}
                 height={36}

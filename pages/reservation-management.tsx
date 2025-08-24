@@ -10,7 +10,7 @@ const reservationSections = [
   {
     title: "How Reservation Management Works",
     desc: "Easily manage all your table bookings and guest reservations in one place.",
-    icon: "/table-booking.svg",
+
     content: (
       <div className="w-full flex flex-col items-center">
         <div className="relative w-full max-w-2xl mx-auto py-8">
@@ -18,22 +18,22 @@ const reservationSections = [
           <div className="relative z-10 flex flex-col gap-0">
             {[
               {
-                icon: "/calendar.svg",
+                icon: "https://www.svgrepo.com/show/530140/calendar.svg",
                 label: "View Reservations",
                 desc: "See all upcoming and past bookings",
               },
               {
-                icon: "/edit.svg",
+                icon: "https://www.svgrepo.com/show/468748/edit-circle.svg",
                 label: "Modify Details",
                 desc: "Edit guest info, time, or table",
               },
               {
-                icon: "/cancel.svg",
+                icon: "https://www.svgrepo.com/show/226123/file-cancel.svg",
                 label: "Cancel Reservation",
                 desc: "Easily cancel or reschedule",
               },
               {
-                icon: "/success.svg",
+                icon: "https://www.svgrepo.com/show/388670/success.svg",
                 label: "Instant Updates",
                 desc: "Get real-time confirmation and reminders",
               },
@@ -91,7 +91,7 @@ const reservationSections = [
   {
     title: "Key Features",
     desc: "Powerful tools to help you manage reservations efficiently and effortlessly.",
-    icon: "/features.svg",
+
     content: (
       <div className="flex flex-wrap gap-8 justify-center items-center py-4">
         {[
@@ -105,10 +105,11 @@ const reservationSections = [
             img: "/table-management.jpg",
             desc: "Assign, block, or free up tables instantly",
           },
+
           {
-            name: "Guest Profiles",
-            img: "/guest-profiles.jpg",
-            desc: "Store guest preferences and history",
+            name: "Loyalty Program",
+            img: "/loyalty-program.jpg",
+            desc: "Reward frequent guests and track loyalty points",
           },
           {
             name: "Notifications",
@@ -125,7 +126,7 @@ const reservationSections = [
               alt={feature.name}
               width={100}
               height={100}
-              className="rounded-xl mb-3 object-cover w-24 h-24"
+              className="rounded-xl mb-3 object-cover object-center w-24 h-24"
             />
             <span className="font-bold text-orange-600 dark:text-yellow-400 text-lg mb-1">
               {feature.name}
@@ -142,19 +143,24 @@ const reservationSections = [
   {
     title: "Why Use Reservation Management?",
     desc: "Enjoy exclusive benefits and a hassle-free experience with our reservation management system.",
-    icon: "/success.svg",
+
     content: (
       <ul className="flex flex-col gap-4 text-zinc-700 dark:text-zinc-200 text-left max-w-xl mx-auto">
         <li className="flex items-center gap-3">
           <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-orange-200 to-yellow-200 dark:from-yellow-900 dark:to-yellow-700">
-            <Image src="/clock.svg" alt="Time Saving" width={20} height={20} />
+            <Image
+              src="https://www.svgrepo.com/show/489958/clock-time.svg"
+              alt="Time Saving"
+              width={20}
+              height={20}
+            />
           </span>
           Save time and reduce manual work
         </li>
         <li className="flex items-center gap-3">
           <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-orange-200 to-yellow-200 dark:from-yellow-900 dark:to-yellow-700">
             <Image
-              src="/analytics.svg"
+              src="https://www.svgrepo.com/show/384381/analytics-chart-diagram-pie.svg"
               alt="Analytics"
               width={20}
               height={20}
@@ -164,13 +170,23 @@ const reservationSections = [
         </li>
         <li className="flex items-center gap-3">
           <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-orange-200 to-yellow-200 dark:from-yellow-900 dark:to-yellow-700">
-            <Image src="/support.svg" alt="Support" width={20} height={20} />
+            <Image
+              src="https://www.svgrepo.com/show/428775/support-online-center.svg"
+              alt="Support"
+              width={20}
+              height={20}
+            />
           </span>
           24/7 support for your team and guests
         </li>
         <li className="flex items-center gap-3">
           <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-orange-200 to-yellow-200 dark:from-yellow-900 dark:to-yellow-700">
-            <Image src="/secure.svg" alt="Secure" width={20} height={20} />
+            <Image
+              src="https://www.svgrepo.com/show/295094/secure-payment-protection.svg"
+              alt="Secure"
+              width={20}
+              height={20}
+            />
           </span>
           Secure and reliable reservation management
         </li>
@@ -181,7 +197,7 @@ const reservationSections = [
   {
     title: "User Testimonials",
     desc: "See what our users are saying about managing reservations with us.",
-    icon: "/user1.jpg",
+
     content: (
       <div className="flex flex-wrap gap-6 justify-center">
         {[
@@ -189,24 +205,24 @@ const reservationSections = [
             name: "Suresh K.",
             feedback:
               "Managing reservations has never been easier. The calendar view is a game changer!",
-            img: "/user1.jpg",
+            img: "/user2.jpg",
           },
           {
             name: "Anita P.",
             feedback:
               "Love the instant updates and reminders. Our guests appreciate it too!",
-            img: "/user2.jpg",
+            img: "/user1.jpg",
           },
           {
             name: "Ravi S.",
             feedback: "The support team is always available and helpful.",
-            img: "/user3.jpg",
+            img: "/user4.jpg",
           },
           {
             name: "Meena D.",
             feedback:
               "We can now focus on our guests instead of paperwork. Highly recommend!",
-            img: "/user4.jpg",
+            img: "/user3.jpg",
           },
         ].map((item) => (
           <div
@@ -235,7 +251,6 @@ const reservationSections = [
   {
     title: "Start Managing Reservations!",
     desc: "Streamline your reservation process and enhance guest satisfaction. Get started today!",
-    icon: "/calendar.svg",
     content: (
       <div
         className="w-full flex flex-col items-center justify-center py-8"
@@ -273,6 +288,21 @@ const ReservationManagement = () => {
         <Headder />
         {/* Hero Section */}
         <section className="relative flex flex-col-reverse md:flex-row items-center justify-between px-4 py-16 md:py-24 mx-auto gap-8 min-h-[100vh]">
+          {/* Background Video */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover z-0 opacity-50 pointer-events-none rounded-none"
+            style={{ objectFit: "cover" }}
+          >
+            <source
+              src="/reservation-management-hero-bg.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
           <div className="flex-1 text-center md:text-left z-10">
             <h1 className="text-4xl md:text-6xl font-extrabold text-orange-600 dark:text-yellow-400 mb-4 drop-shadow-lg">
               Reservation Management Made Simple
@@ -307,15 +337,8 @@ const ReservationManagement = () => {
             key={i}
             className="py-14 px-4   mx-auto flex flex-col items-center text-center gap-6"
           >
-            {sec.icon && (
+            {sec.title && (
               <div className="flex flex-col items-center mb-4">
-                <Image
-                  src={sec?.icon}
-                  alt={sec?.title}
-                  width={56}
-                  height={56}
-                  className="mb-2"
-                />
                 <h2 className="text-2xl md:text-3xl font-bold text-orange-600 dark:text-yellow-400 mb-2 drop-shadow-lg">
                   {sec?.title}
                 </h2>

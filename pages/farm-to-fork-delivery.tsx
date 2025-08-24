@@ -25,15 +25,15 @@ const FarmToForkDelivery = () => {
             <h1 className="text-4xl md:text-5xl font-extrabold text-orange-600 dark:text-yellow-400 mb-4 drop-shadow-lg">
               From Local Farms to Your Table: The Rise of Farm-to-Fork Delivery
             </h1>
-            <p className="dark:text-zinc-200 text-lg md:text-2xl text-zinc-700   mb-6 max-w-xl">
+            <p className="dark:text-zinc-200 text-lg md:text-2xl text-zinc-700   mb-6  ">
               Discover how farm-to-fork delivery is revolutionizing food
               sourcing, supporting local farmers, and ensuring the freshest
               ingredients reach your plate.
             </p>
           </div>
-          <div className="flex-1 flex w-full md:w-[70%] h-auto justify-center z-10">
+          <div className="flex-1 flex w-full  h-auto justify-center z-10">
             <Image
-              src="/farm-to-fork-hero.jpg"
+              src="/blog3.jpg"
               alt="Farm to Fork Delivery"
               width={420}
               height={320}

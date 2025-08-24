@@ -81,7 +81,7 @@ const ContactUs = () => {
         </div>
         <div className="flex-1 flex justify-center items-center z-20">
           <Image
-            src="/contact-hero-illus.svg"
+            src="/contact-hero-illus.jpg"
             alt="Contact Hero"
             className="w-full max-w-xs md:max-w-md rounded-2xl shadow-xl h-[350px] object-center object-cover "
             data-aos="zoom-in"
@@ -180,7 +180,7 @@ const ContactUs = () => {
               alt="Agent Priya"
               width={120}
               height={120}
-              className="rounded-full mb-4 shadow-lg object-cover h-28 w-28"
+              className="rounded-full mb-4 shadow-lg object-cover object-top h-28 w-28"
             />
             <h3 className="font-bold text-orange-600 dark:text-yellow-400 text-lg mb-1">
               Priya Singh
@@ -200,7 +200,7 @@ const ContactUs = () => {
               alt="Agent Rohan"
               width={120}
               height={120}
-              className="rounded-full mb-4 shadow-lg object-cover h-28 w-28"
+              className="rounded-full object-top mb-4 shadow-lg object-cover h-28 w-28"
             />
             <h3 className="font-bold text-orange-600 dark:text-yellow-400 text-lg mb-1">
               Rohan Mehta
@@ -220,7 +220,7 @@ const ContactUs = () => {
               alt="Agent Aisha"
               width={120}
               height={120}
-              className="rounded-full mb-4 shadow-lg object-cover h-28 w-28"
+              className="rounded-full object-top mb-4 shadow-lg object-cover h-28 w-28"
             />
             <h3 className="font-bold text-orange-600 dark:text-yellow-400 text-lg mb-1">
               Aisha Khan
@@ -246,25 +246,25 @@ const ContactUs = () => {
         </h2>
         <div className="flex flex-wrap gap-8 justify-center items-center animate-fade-in-up">
           <Image
-            src="/partner1.svg"
+            src="/partner1.jpg"
             alt="Partner 1"
             width={100}
-            height={60}
-            className="h-12 w-auto"
+            height={100}
+            className="h-20   w-20 rounded-full object-cover"
           />
           <Image
-            src="/partner2.svg"
+            src="/partner2.jpg"
             alt="Partner 2"
             width={100}
-            height={60}
-            className="h-12 w-auto"
+            height={100}
+            className="h-20   w-20 rounded-full object-cover"
           />
           <Image
-            src="/partner3.svg"
+            src="/partner3.jpg"
             alt="Partner 3"
             width={100}
-            height={60}
-            className="h-12 w-auto"
+            height={100}
+            className="h-20   w-20 rounded-full object-cover"
           />
         </div>
         <p className="text-center text-zinc-700 dark:text-zinc-200 mt-6 animate-fade-in-up">

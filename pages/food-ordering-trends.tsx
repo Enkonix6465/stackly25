@@ -29,7 +29,7 @@ const FoodOrderingTrends = () => {
           </div>
           <div className="flex-1 flex w-full md:w-[70%] h-auto justify-center z-10">
             <Image
-              src="/food-ordering-trends-hero.jpg"
+              src="/blog2.jpg"
               alt="Food Ordering Trends"
               width={420}
               height={320}
