@@ -1,78 +1,70 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useTranslation } from "react-i18next";
 import Headder from "@/components/Headder";
 import Footer from "@/components/Footer";
-import AOS from "aos";
+
 import Image from "next/image";
 import Link from "next/link";
-import "aos/dist/aos.css";
+
 import Head from "next/head";
 
-const services = [
+const servicesData = [
   {
-    title: "Food Delivery",
-    desc: "Get your favorite meals delivered hot and fresh to your doorstep, fast and hassle-free.",
+    titleKey: "Header_Food_Delivery",
+    descKey: "Services_Food_Delivery_Desc",
     icon: "https://www.svgrepo.com/show/401385/delivery-truck.svg",
     link: "/food-delivery",
     color: "from-orange-400 via-yellow-300 to-orange-600",
   },
   {
-    title: "Table Booking",
-    desc: "Reserve your table at top restaurants instantly and skip the wait.",
+    titleKey: "Header_Table_Booking",
+    descKey: "Services_Table_Booking_Desc",
     icon: "https://www.svgrepo.com/show/265562/table.svg",
-    link: " /table-booking",
+    link: "/table-booking",
     color: "from-yellow-400 via-orange-200 to-yellow-600",
   },
   {
-    title: "Catering",
-    desc: "Delicious catering for all occasions, tailored to your needs and preferences.",
+    titleKey: "Header_Catering",
+    descKey: "Services_Catering_Desc",
     icon: "https://www.svgrepo.com/show/251535/catering-buffet.svg",
-    link: " /catering",
+    link: "/catering",
     color: "from-green-400 via-yellow-200 to-green-600",
   },
   {
-    title: "Online Menu",
-    desc: "Browse and order from our digital menu, updated in real-time.",
+    titleKey: "Header_Online_Menu",
+    descKey: "Services_Online_Menu_Desc",
     icon: "https://www.svgrepo.com/show/277641/menu.svg",
-    link: " /online-menu",
+    link: "/online-menu",
     color: "from-pink-400 via-yellow-200 to-orange-400",
   },
   {
-    title: "Party Orders",
-    desc: "Order in bulk for parties and events, with special discounts and combos.",
+    titleKey: "Header_Party_Orders",
+    descKey: "Services_Party_Orders_Desc",
     icon: "https://www.svgrepo.com/show/401329/confetti-ball.svg",
-    link: " /party-orders",
+    link: "/party-orders",
     color: "from-purple-400 via-yellow-200 to-pink-500",
   },
   {
-    title: "Reservation Management",
-    desc: "Seamlessly manage your reservations and bookings online.",
+    titleKey: "Header_Reservation_Management",
+    descKey: "Services_Reservation_Management_Desc",
     icon: "https://www.svgrepo.com/show/428761/management-check-gear.svg",
-    link: " /reservation-management",
+    link: "/reservation-management",
     color: "from-blue-400 via-yellow-200 to-blue-600",
   },
 ];
 
 export default function Services() {
-  useEffect(() => {
-    AOS.init({ once: true, duration: 900, offset: 60 });
-  }, []);
-
+  const { t } = useTranslation();
   return (
     <>
       <Head>
-        <title>Our Services</title>
-        <meta
-          name="description"
-          content="Explore our range of services including food delivery, table booking, and more."
-        />
+        <title>{t("Services_Page_Title")}</title>
+        <meta name="description" content={t("Services_Page_Description")} />
       </Head>
       <Headder />
 
       {/* 1. Hero Section */}
-      <section
-        className="relative flex flex-col md:flex-row items-center justify-between px-4 py-20 min-h-[80vh] w-full overflow-hidden bg-gradient-to-br from-yellow-50 via-orange-100 to-white dark:from-yellow-900 dark:via-orange-900 dark:to-zinc-900"
-        data-aos="fade-up"
-      >
+      <section className="relative flex flex-col md:flex-row items-center justify-between px-4 py-20 min-h-[80vh] w-full overflow-hidden bg-gradient-to-br from-yellow-50 via-orange-100 to-white dark:from-yellow-900 dark:via-orange-900 dark:to-zinc-900">
         {/* Background Video */}
         <video
           className="absolute inset-0 w-full h-full object-cover z-0 opacity-30 dark:opacity-50 pointer-events-none"
@@ -86,19 +78,17 @@ export default function Services() {
         </video>
         <div className="flex-1 flex flex-col justify-center items-start z-20">
           <h1 className="text-4xl md:text-6xl font-extrabold text-orange-600 dark:text-yellow-400 mb-6 drop-shadow-lg animate-slide-in-left">
-            Our Services
+            {t("Services_Page_Title")}
           </h1>
           <p className="text-lg md:text-2xl dark:text-zinc-200 mb-8 max-w-2xl animate-fade-in-up">
-            Experience the best in food delivery, dining, and event services.
-            Explore what we offer to make every meal memorable.
+            {t("Services_Hero_Desc")}
           </p>
         </div>
         <div className="flex-1 flex justify-center items-center z-20">
           <Image
             src="https://i.pinimg.com/736x/c9/6a/62/c96a62d98b654fffb855265c082e30d0.jpg"
-            alt="Services"
+            alt={t("Services_Page_Title")}
             className="w-full max-w-xs md:max-w-md rounded-2xl shadow-xl h-[500px] object-center object-cover "
-            data-aos="zoom-in"
             style={{ animationDelay: "0.5s", animationDuration: "1.2s" }}
             width={500}
             height={500}
@@ -107,18 +97,14 @@ export default function Services() {
       </section>
 
       {/* 2. Services Grid Section */}
-      <section
-        className="py-16 px-4 w-full max-w-7xl mx-auto"
-        data-aos="fade-up"
-      >
+      <section className="py-16 px-4 w-full max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-orange-600 dark:text-yellow-400 mb-12 text-center animate-fade-in-up">
-          What We Offer
+          {t("Services_Grid_Title")}
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {services.map((service, idx) => (
+          {servicesData.map((service, idx) => (
             <div
               className={`group relative flex flex-col items-center justify-between bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl rounded-3xl shadow-2xl border-2 border-orange-100 dark:border-yellow-900 p-8 hover:scale-105 hover:shadow-orange-200 dark:hover:shadow-yellow-900 transition-all duration-500 cursor-pointer animate-fade-in-up`}
-              data-aos="zoom-in"
               style={{
                 animationDelay: `${0.1 + idx * 0.1}s`,
                 animationDuration: "1.1s",
@@ -129,21 +115,21 @@ export default function Services() {
               >
                 <Image
                   src={service.icon}
-                  alt={service.title}
+                  alt={t(service.titleKey)}
                   className="w-12 h-12 object-cover"
                   width={48}
                   height={48}
                 />
               </div>
               <h3 className="text-xl font-bold text-orange-600 dark:text-yellow-400 mb-2 text-center">
-                {service.title}
+                {t(service.titleKey)}
               </h3>
               <p className="text-zinc-700 dark:text-zinc-200 text-center mb-4">
-                {service.desc}
+                {t(service.descKey)}
               </p>
-              <Link href={service.link} key={service.title}>
+              <Link href={service.link} key={service.titleKey}>
                 <span className="inline-block bg-gradient-to-r from-orange-400 via-yellow-300 to-orange-600 text-white px-6 py-2 rounded-full font-bold shadow-lg  transition-all duration-300 group-hover:scale-105 group-hover:shadow-orange-300 dark:group-hover:shadow-yellow-700 border-2 border-orange-200 dark:border-yellow-600">
-                  Learn More
+                  {t("Services_Learn_More")}
                 </span>
               </Link>
             </div>
@@ -152,171 +138,139 @@ export default function Services() {
       </section>
 
       {/* 3. Why Choose Us Section */}
-      <section
-        className="relative py-20 px-4 w-full flex flex-col md:flex-row items-center gap-16   mx-auto overflow-visible"
-        data-aos="fade-up"
-      >
+      <section className="relative py-20 px-4 w-full flex flex-col md:flex-row items-center gap-16   mx-auto overflow-visible">
         {/* Diagonal split background */}
         <span
           className="absolute inset-0 w-full h-full bg-gradient-to-tr from-orange-50 via-yellow-100 to-white dark:from-yellow-900 dark:via-orange-900 dark:to-zinc-900 rounded-3xl shadow-2xl -z-10"
           style={{ clipPath: "polygon(0 0, 100% 0, 100% 80%, 0 100%)" }}
         ></span>
         {/* Left: Glassmorphism card with frosted border and floating badges */}
-        <div
-          className="flex-1 flex flex-col items-start z-10"
-          data-aos="fade-right"
-        >
+        <div className="flex-1 flex flex-col items-start z-10">
           <div className="relative w-full bg-white/80 dark:bg-zinc-900/80 backdrop-blur-2xl rounded-3xl shadow-2xl border-4 border-orange-100 dark:border-yellow-900 px-10 py-12 animate-fade-in-up overflow-visible">
             <h2 className="text-4xl font-extrabold text-orange-600 dark:text-yellow-400 mb-10 tracking-tight animate-slide-in-left">
-              Why Choose Us?
+              {t("Services_Why_Choose_Us_Title")}
             </h2>
             <ul className="flex flex-col gap-7">
-              <li
-                className="flex items-center gap-5 animate-fade-in-up"
-                style={{ animationDelay: "0.1s" }}
-              >
-                <span className="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-orange-400 via-yellow-300 to-orange-600 text-white text-2xl shadow-xl border-4 border-white dark:border-zinc-900">
-                  <svg
-                    className="w-7 h-7"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
+              {[
+                "Services_Why_Choose_Us_Point1",
+                "Services_Why_Choose_Us_Point2",
+                "Services_Why_Choose_Us_Point3",
+                "Services_Why_Choose_Us_Point4",
+                "Services_Why_Choose_Us_Point5",
+                "Services_Why_Choose_Us_Point6",
+              ].map((key, idx) => (
+                <li
+                  key={key}
+                  className="flex items-center gap-5 animate-fade-in-up"
+                  style={{ animationDelay: `${0.1 + idx * 0.1}s` }}
+                >
+                  <span
+                    className="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br text-white text-2xl shadow-xl border-4 border-white dark:border-zinc-900"
+                    style={{
+                      background: [
+                        "linear-gradient(to bottom right, #fb923c, #fde68a, #ea580c)",
+                        "linear-gradient(to bottom right, #fde68a, #fbbf24, #f59e42)",
+                        "linear-gradient(to bottom right, #4ade80, #fde68a, #22c55e)",
+                        "linear-gradient(to bottom right, #f472b6, #fde68a, #fb923c)",
+                        "linear-gradient(to bottom right, #a78bfa, #fde68a, #ec4899)",
+                        "linear-gradient(to bottom right, #60a5fa, #fde68a, #2563eb)",
+                      ][idx],
+                    }}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z"
-                    />
-                  </svg>
-                </span>
-                <span className="text-lg md:text-xl text-zinc-700 dark:text-zinc-200 font-semibold">
-                  Fast, reliable, and contactless delivery
-                </span>
-              </li>
-              <li
-                className="flex items-center gap-5 animate-fade-in-up"
-                style={{ animationDelay: "0.2s" }}
-              >
-                <span className="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-yellow-400 via-orange-200 to-yellow-600 text-white text-2xl shadow-xl border-4 border-white dark:border-zinc-900">
-                  <svg
-                    className="w-7 h-7"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </span>
-                <span className="text-lg md:text-xl text-zinc-700 dark:text-zinc-200 font-semibold">
-                  Wide range of cuisines and restaurants
-                </span>
-              </li>
-              <li
-                className="flex items-center gap-5 animate-fade-in-up"
-                style={{ animationDelay: "0.3s" }}
-              >
-                <span className="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-green-400 via-yellow-200 to-green-600 text-white text-2xl shadow-xl border-4 border-white dark:border-zinc-900">
-                  <svg
-                    className="w-7 h-7"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    />
-                  </svg>
-                </span>
-                <span className="text-lg md:text-xl text-zinc-700 dark:text-zinc-200 font-semibold">
-                  Easy online reservations and management
-                </span>
-              </li>
-              <li
-                className="flex items-center gap-5 animate-fade-in-up"
-                style={{ animationDelay: "0.4s" }}
-              >
-                <span className="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-pink-400 via-yellow-200 to-orange-400 text-white text-2xl shadow-xl border-4 border-white dark:border-zinc-900">
-                  <svg
-                    className="w-7 h-7"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 8c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zm0 0V5m0 11v3m7-7h3m-17 0H2"
-                    />
-                  </svg>
-                </span>
-                <span className="text-lg md:text-xl text-zinc-700 dark:text-zinc-200 font-semibold">
-                  Custom catering for every occasion
-                </span>
-              </li>
-              <li
-                className="flex items-center gap-5 animate-fade-in-up"
-                style={{ animationDelay: "0.5s" }}
-              >
-                <span className="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-purple-400 via-yellow-200 to-pink-500 text-white text-2xl shadow-xl border-4 border-white dark:border-zinc-900">
-                  <svg
-                    className="w-7 h-7"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M17 9V7a5 5 0 00-10 0v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2z"
-                    />
-                  </svg>
-                </span>
-                <span className="text-lg md:text-xl text-zinc-700 dark:text-zinc-200 font-semibold">
-                  Exclusive party and group order deals
-                </span>
-              </li>
-              <li
-                className="flex items-center gap-5 animate-fade-in-up"
-                style={{ animationDelay: "0.6s" }}
-              >
-                <span className="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-400 via-yellow-200 to-blue-600 text-white text-2xl shadow-xl border-4 border-white dark:border-zinc-900">
-                  <svg
-                    className="w-7 h-7"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M18.364 5.636l-1.414 1.414M6.343 17.657l-1.414 1.414M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 7.364l-1.414-1.414M6.343 6.343L4.929 4.929"
-                    />
-                  </svg>
-                </span>
-                <span className="text-lg md:text-xl text-zinc-700 dark:text-zinc-200 font-semibold">
-                  24/7 customer support
-                </span>
-              </li>
+                    {/* Keep SVGs as is for each point */}
+                    {
+                      [
+                        <svg
+                          className="w-7 h-7"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z"
+                          />
+                        </svg>,
+                        <svg
+                          className="w-7 h-7"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>,
+                        <svg
+                          className="w-7 h-7"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                          />
+                        </svg>,
+                        <svg
+                          className="w-7 h-7"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M12 8c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zm0 0V5m0 11v3m7-7h3m-17 0H2"
+                          />
+                        </svg>,
+                        <svg
+                          className="w-7 h-7"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M17 9V7a5 5 0 00-10 0v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2z"
+                          />
+                        </svg>,
+                        <svg
+                          className="w-7 h-7"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M18.364 5.636l-1.414 1.414M6.343 17.657l-1.414 1.414M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 7.364l-1.414-1.414M6.343 6.343L4.929 4.929"
+                          />
+                        </svg>,
+                      ][idx]
+                    }
+                  </span>
+                  <span className="text-lg md:text-xl text-zinc-700 dark:text-zinc-200 font-semibold">
+                    {t(key)}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
         {/* Right: Layered image card with glowing border and floating sparkles */}
-        <div
-          className="flex-1 flex justify-center items-center z-10"
-          data-aos="zoom-in"
-        >
+        <div className="flex-1 flex justify-center items-center z-10">
           <div className="relative w-80 md:w-96 h-80 md:h-96 flex items-center justify-center rounded-3xl bg-white/90 dark:bg-zinc-900/90 shadow-2xl border-4 border-orange-100 dark:border-yellow-900 overflow-visible">
             {/* Glowing border ring */}
             <span className="absolute -inset-6 rounded-full bg-gradient-to-tr from-orange-400 via-yellow-200 to-orange-600 dark:from-yellow-700 dark:via-orange-500 dark:to-yellow-300 blur-3xl opacity-40 animate-pulse-slow z-0"></span>
@@ -337,14 +291,11 @@ export default function Services() {
       </section>
 
       {/* 4. How It Works Section */}
-      <section
-        className="relative py-24 px-4 w-full mx-auto overflow-visible"
-        data-aos="fade-up"
-      >
+      <section className="relative py-24 px-4 w-full mx-auto overflow-visible">
         {/* Decorative background gradient */}
         <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-orange-50 via-yellow-100 to-white dark:from-yellow-900 dark:via-orange-900 dark:to-zinc-900   shadow-2xl -z-10"></span>
         <h2 className="text-3xl md:text-4xl font-bold text-orange-600 dark:text-yellow-400 mb-20 text-center animate-fade-in-up relative z-10">
-          How It Works
+          {t("Services_How_Title")}
         </h2>
         <div className="flex flex-col md:flex-row items-center gap-20 relative z-10">
           {/* Zig-zag stepper on the left */}
@@ -368,12 +319,10 @@ export default function Services() {
               </span>
               <div className="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl rounded-2xl shadow-xl px-8 py-7 border-l-4 border-orange-400 dark:border-yellow-400 w-full">
                 <span className="text-2xl text-orange-600 dark:text-yellow-400 font-extrabold block mb-2">
-                  Browse & Select
+                  {t("Services_How_Step1_Title")}
                 </span>
                 <span className="text-lg md:text-xl text-zinc-700 dark:text-zinc-200 font-medium">
-                  Explore our wide range of restaurants, cuisines, and services.
-                  Use filters and recommendations to find exactly what you
-                  crave.
+                  {t("Services_How_Step1_Desc")}
                 </span>
               </div>
               {/* Connecting line */}
@@ -398,12 +347,10 @@ export default function Services() {
               </span>
               <div className="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl rounded-2xl shadow-xl px-8 py-7 border-l-4 border-yellow-400 dark:border-orange-400 w-full md:text-right">
                 <span className="text-2xl text-yellow-500 dark:text-orange-300 font-extrabold block mb-2">
-                  Order & Reserve
+                  {t("Services_How_Step2_Title")}
                 </span>
                 <span className="text-lg md:text-xl text-zinc-700 dark:text-zinc-200 font-medium">
-                  Place your food order, book a table, or request catering in
-                  just a few clicks. Enjoy real-time updates and instant
-                  confirmations.
+                  {t("Services_How_Step2_Desc")}
                 </span>
               </div>
               {/* Connecting line */}
@@ -428,12 +375,10 @@ export default function Services() {
               </span>
               <div className="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl rounded-2xl shadow-xl px-8 py-7 border-l-4 border-green-400 dark:border-yellow-400 w-full">
                 <span className="text-2xl text-green-600 dark:text-yellow-400 font-extrabold block mb-2">
-                  Enjoy & Celebrate
+                  {t("Services_How_Step3_Title")}
                 </span>
                 <span className="text-lg md:text-xl text-zinc-700 dark:text-zinc-200 font-medium">
-                  Sit back and relax! Your food arrives hot, your table is
-                  ready, or your event is perfectly catered. Savor every moment
-                  with us.
+                  {t("Services_How_Step3_Desc")}
                 </span>
               </div>
             </div>
@@ -442,15 +387,12 @@ export default function Services() {
       </section>
 
       {/* 5. Testimonials Section */}
-      <section
-        className="relative py-20 px-4 w-full mx-auto bg-gradient-to-br from-yellow-50 via-orange-100 to-white dark:from-yellow-900 dark:via-orange-900 dark:to-zinc-900 shadow-xl overflow-visible"
-        data-aos="fade-up"
-      >
+      <section className="relative py-20 px-4 w-full mx-auto bg-gradient-to-br from-yellow-50 via-orange-100 to-white dark:from-yellow-900 dark:via-orange-900 dark:to-zinc-900 shadow-xl overflow-visible">
         {/* Decorative background and floating badge */}
         <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-yellow-50 via-orange-100 to-white dark:from-yellow-900 dark:via-orange-900 dark:to-zinc-900   shadow-2xl -z-10"></span>
 
         <h2 className="text-3xl md:text-4xl font-bold text-orange-600 dark:text-yellow-400 mb-20 text-center animate-fade-in-up relative z-10">
-          What Our Customers Say
+          {t("Services_Testimonials_Title")}
         </h2>
         <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-8 relative z-10">
           {/* Testimonial Card 1 */}
@@ -464,14 +406,13 @@ export default function Services() {
               />
             </span>
             <p className="text-zinc-700 dark:text-zinc-200 mb-6 mt-16 text-center text-lg font-medium">
-              “The food delivery is always on time and the quality is
-              top-notch.”
+              {t("Services_Testimonial1_Review")}
             </p>
             <span className="font-bold text-orange-600 dark:text-yellow-400 text-lg">
-              Priya S.
+              {t("Services_Testimonial1_Name")}
             </span>
             <span className="text-zinc-500 dark:text-zinc-400 text-sm mb-2">
-              Foodie & Blogger
+              {t("Services_Testimonial1_Role")}
             </span>
           </div>
           {/* Testimonial Card 2 */}
@@ -487,14 +428,13 @@ export default function Services() {
               />
             </span>
             <p className="text-zinc-700 dark:text-zinc-200 mb-6 mt-16 text-center text-lg font-medium">
-              “Booking a table is so easy now. The app is user-friendly and the
-              staff is great!”
+              {t("Services_Testimonial2_Review")}
             </p>
             <span className="font-bold text-orange-600 dark:text-yellow-400 text-lg">
-              Rahul M.
+              {t("Services_Testimonial2_Name")}
             </span>
             <span className="text-zinc-500 dark:text-zinc-400 text-sm mb-2">
-              Businessman
+              {t("Services_Testimonial2_Role")}
             </span>
           </div>
           {/* Testimonial Card 3 */}
@@ -510,34 +450,29 @@ export default function Services() {
               />
             </span>
             <p className="text-zinc-700 dark:text-zinc-200 mb-6 mt-16 text-center text-lg font-medium">
-              “We ordered catering for our event and everyone loved the food.
-              Will use again!”
+              {t("Services_Testimonial3_Review")}
             </p>
             <span className="font-bold text-orange-600 dark:text-yellow-400 text-lg">
-              Aisha K.
+              {t("Services_Testimonial3_Name")}
             </span>
             <span className="text-zinc-500 dark:text-zinc-400 text-sm mb-2">
-              Event Planner
+              {t("Services_Testimonial3_Role")}
             </span>
           </div>
         </div>
       </section>
 
       {/* 6. Call to Action Section */}
-      <section
-        className="py-16 px-4 w-full flex flex-col items-center justify-center gap-8   mx-auto bg-gradient-to-br from-orange-50 via-yellow-100 to-white dark:from-yellow-900 dark:via-orange-900 dark:to-zinc-900   "
-        data-aos="fade-up"
-      >
+      <section className="py-16 px-4 w-full flex flex-col items-center justify-center gap-8   mx-auto bg-gradient-to-br from-orange-50 via-yellow-100 to-white dark:from-yellow-900 dark:via-orange-900 dark:to-zinc-900   ">
         <h2 className="text-3xl md:text-4xl font-bold text-orange-600 dark:text-yellow-400 mb-4 text-center animate-fade-in-up">
-          Ready to Experience the Best?
+          {t("Services_CTA_Title")}
         </h2>
         <p className="text-zinc-700 dark:text-zinc-200 text-lg text-center mb-8 animate-fade-in-up">
-          Get started with our restaurant and food delivery services. One click
-          away from your next great meal!
+          {t("Services_CTA_Desc")}
         </p>
         <Link href="/contact-us">
           <span className="inline-block bg-gradient-to-r from-yellow-400 via-orange-300 to-yellow-600 text-white px-10 py-4 rounded-full font-bold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-yellow-300 dark:hover:shadow-orange-700 border-2 border-yellow-200 dark:border-orange-600 animate-pop-in text-lg">
-            Contact Us
+            {t("Services_CTA_Button")}
           </span>
         </Link>
       </section>

@@ -1,16 +1,22 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { useRouter } from "next/router";
+import i18n from "../i18n";
 import Link from "next/link";
 import Image from "next/image";
 
-import { useRouter } from "next/navigation";
 import { ModeToggle } from "./theme/ModeToggle";
 
 const Headder = () => {
-  const router = useRouter();
+  // removed duplicate router declaration
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const navRef = useRef<HTMLDivElement>(null);
   const [userInitials, setUserInitials] = React.useState(""); // Default initials
+  const [selectedLanguage, setSelectedLanguage] = useState("English");
+  const [langReady, setLangReady] = useState(false);
+  const router = useRouter();
+  const { t } = useTranslation();
 
   // Logout handler
   const handleLogout = () => {
@@ -23,7 +29,7 @@ const Headder = () => {
         const users = JSON.parse(usersData);
         const now = new Date().toISOString();
         const updatedUsers = users.map((u: any) =>
-          u.email === user.email ? { ...u, lastLoginOut: now } : u,
+          u.email === user.email ? { ...u, lastLoginOut: now } : u
         );
         localStorage.setItem("Users", JSON.stringify(updatedUsers));
       } catch (e) {
@@ -59,6 +65,59 @@ const Headder = () => {
     setOpenDropdown((prev) => (prev === menu ? null : menu));
   };
 
+  // Language change handler
+  const handleLanguageChange = (lang: string) => {
+    setSelectedLanguage(lang);
+    setOpenDropdown(null);
+    // Change i18n language
+    if (lang === "English") i18n.changeLanguage("en");
+    else if (lang === "Arabic") i18n.changeLanguage("ar");
+    else if (lang === "Hebrew") i18n.changeLanguage("he");
+    // Persist language selection
+    if (typeof window !== "undefined") {
+      localStorage.setItem("selectedLanguage", lang);
+      if (lang === "Arabic" || lang === "Hebrew") {
+        document.documentElement.dir = "rtl";
+      } else {
+        document.documentElement.dir = "ltr";
+      }
+    }
+  };
+
+  // Restore language from localStorage on mount and on route change
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const setLangFromStorage = () => {
+        const savedLang = localStorage.getItem("selectedLanguage");
+        if (savedLang) {
+          setSelectedLanguage(savedLang);
+          if (savedLang === "English" && i18n.language !== "en")
+            i18n.changeLanguage("en");
+          else if (savedLang === "Arabic" && i18n.language !== "ar")
+            i18n.changeLanguage("ar");
+          else if (savedLang === "Hebrew" && i18n.language !== "he")
+            i18n.changeLanguage("he");
+          // Set document direction
+          if (savedLang === "Arabic" || savedLang === "Hebrew") {
+            document.documentElement.dir = "rtl";
+          } else {
+            document.documentElement.dir = "ltr";
+          }
+        }
+      };
+      setLangFromStorage();
+      setLangReady(true);
+      // Listen for route changes to re-apply language
+      const handleRouteChange = () => {
+        setLangFromStorage();
+      };
+      router.events.on("routeChangeComplete", handleRouteChange);
+      return () => {
+        router.events.off("routeChangeComplete", handleRouteChange);
+      };
+    }
+  }, [router.events, i18n.language]);
+
   // Close dropdowns on outside click
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -72,6 +131,8 @@ const Headder = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  if (!langReady) return null;
 
   return (
     <header className="w-full sticky caret-transparent top-0 z-50 bg-gradient-to-r from-orange-100 to-yellow-100 dark:bg-gradient-to-r dark:from-zinc-900 dark:to-zinc-800 text-zinc-800 dark:text-yellow-100 border-b border-orange-200 dark:border-yellow-700 transition-colors duration-300 shadow-none">
@@ -109,21 +170,21 @@ const Headder = () => {
                 onClick={() => handleDropdown("home")}
                 className="flex items-center gap-1 px-4 py-2 rounded-lg hover:bg-orange-100 dark:hover:bg-zinc-800 transition-colors w-full md:w-auto justify-between md:justify-center"
               >
-                Home <span className="ml-1">&#9662;</span>
+                {t("Header_Home")} <span className="ml-1">&#9662;</span>
               </button>
               {openDropdown === "home" && (
                 <ul className="md:absolute left-0 mt-2 w-full md:w-44 bg-white dark:bg-zinc-800 rounded-lg shadow-lg py-2 z-30 md:z-20">
                   <li>
                     <Link href="/home1">
                       <span className="block px-4 py-2 hover:bg-orange-50 dark:hover:bg-zinc-700 rounded transition-colors cursor-pointer">
-                        Home 1
+                        {t("Header_Home")} 1
                       </span>
                     </Link>
                   </li>
                   <li>
                     <Link href="/home2">
                       <span className="block px-4 py-2 hover:bg-orange-50 dark:hover:bg-zinc-700 rounded transition-colors cursor-pointer">
-                        Home 2
+                        {t("Header_Home")} 2
                       </span>
                     </Link>
                   </li>
@@ -133,7 +194,7 @@ const Headder = () => {
             <li className="relative w-full md:w-auto">
               <Link href="/about-us">
                 <span className="px-4 py-2 rounded-lg hover:bg-orange-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer">
-                  About Us
+                  {t("Header_About_Us")}
                 </span>
               </Link>
             </li>
@@ -142,56 +203,56 @@ const Headder = () => {
                 onClick={() => handleDropdown("services")}
                 className="flex items-center gap-1 px-4 py-2 rounded-lg hover:bg-orange-100 dark:hover:bg-zinc-800 transition-colors w-full md:w-auto justify-between md:justify-center"
               >
-                Services <span className="ml-1">&#9662;</span>
+                {t("Header_Services")} <span className="ml-1">&#9662;</span>
               </button>
               {openDropdown === "services" && (
                 <ul className="md:absolute left-0 mt-2 w-full md:w-56 bg-white dark:bg-zinc-800 rounded-lg shadow-lg py-2 z-30 md:z-20">
                   <li>
                     <Link href="/services">
                       <span className="block px-4 py-2 hover:bg-orange-50 dark:hover:bg-zinc-700 rounded transition-colors cursor-pointer">
-                        All Services
+                        {t("Header_Services")}
                       </span>
                     </Link>
                   </li>
                   <li>
                     <Link href="/food-delivery">
                       <span className="block px-4 py-2 hover:bg-orange-50 dark:hover:bg-zinc-700 rounded transition-colors cursor-pointer">
-                        Food Delivery
+                        {t("Header_Food_Delivery")}
                       </span>
                     </Link>
                   </li>
                   <li>
                     <Link href="/table-booking">
                       <span className="block px-4 py-2 hover:bg-orange-50 dark:hover:bg-zinc-700 rounded transition-colors cursor-pointer">
-                        Table Booking
+                        {t("Header_Table_Booking")}
                       </span>
                     </Link>
                   </li>
                   <li>
                     <Link href="/catering">
                       <span className="block px-4 py-2 hover:bg-orange-50 dark:hover:bg-zinc-700 rounded transition-colors cursor-pointer">
-                        Catering
+                        {t("Header_Catering")}
                       </span>
                     </Link>
                   </li>
                   <li>
                     <Link href="/online-menu">
                       <span className="block px-4 py-2 hover:bg-orange-50 dark:hover:bg-zinc-700 rounded transition-colors cursor-pointer">
-                        Online Menu
+                        {t("Header_Online_Menu")}
                       </span>
                     </Link>
                   </li>
                   <li>
                     <Link href="/party-orders">
                       <span className="block px-4 py-2 hover:bg-orange-50 dark:hover:bg-zinc-700 rounded transition-colors cursor-pointer">
-                        Party Orders
+                        {t("Header_Party_Orders")}
                       </span>
                     </Link>
                   </li>
                   <li>
                     <Link href="/reservation-management">
                       <span className="block px-4 py-2 hover:bg-orange-50 dark:hover:bg-zinc-700 rounded transition-colors cursor-pointer">
-                        Reservation Management
+                        {t("Header_Reservation_Management")}
                       </span>
                     </Link>
                   </li>
@@ -201,19 +262,72 @@ const Headder = () => {
             <li className="relative w-full md:w-auto">
               <Link href="/blog">
                 <span className="px-4 py-2 rounded-lg hover:bg-orange-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer">
-                  Blog
+                  {t("Header_Blog")}
                 </span>
               </Link>
             </li>
             <li className="relative w-full md:w-auto">
               <Link href="/contact-us">
                 <span className="px-4 py-2 rounded-lg hover:bg-orange-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer">
-                  Contact Us
+                  {t("Header_Contact_Us")}
                 </span>
               </Link>
             </li>
           </ul>
 
+          {/* Language Dropdown */}
+          <div className="relative ml-2">
+            <button
+              onClick={() => handleDropdown("language")}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-tr from-orange-200 to-yellow-200 dark:from-yellow-900 dark:to-orange-900 text-orange-700 dark:text-yellow-300 font-semibold hover:bg-orange-100 dark:hover:bg-zinc-800 transition-colors focus:outline-none"
+              aria-label="Language menu"
+            >
+              <span className="mr-1">{t(selectedLanguage)}</span>
+              <span className="text-lg">&#9662;</span>
+            </button>
+            {openDropdown === "language" && (
+              <ul className="absolute right-0 mt-2 w-36 bg-white dark:bg-zinc-800 rounded-lg shadow-lg py-2 z-30">
+                <li>
+                  <button
+                    onClick={() => handleLanguageChange("English")}
+                    className={`block w-full text-left px-4 py-2 rounded transition-colors cursor-pointer ${
+                      selectedLanguage === "English"
+                        ? "bg-orange-50 dark:bg-yellow-900 font-bold"
+                        : "hover:bg-orange-50 dark:hover:bg-zinc-700"
+                    }`}
+                  >
+                    {t("English")}
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => handleLanguageChange("Arabic")}
+                    className={`block w-full text-left px-4 py-2 rounded transition-colors cursor-pointer ${
+                      selectedLanguage === "Arabic"
+                        ? "bg-orange-50 dark:bg-yellow-900 font-bold"
+                        : "hover:bg-orange-50 dark:hover:bg-zinc-700"
+                    }`}
+                  >
+                    {t("Arabic")}
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => handleLanguageChange("Hebrew")}
+                    className={`block w-full text-left px-4 py-2 rounded transition-colors cursor-pointer ${
+                      selectedLanguage === "Hebrew"
+                        ? "bg-orange-50 dark:bg-yellow-900 font-bold"
+                        : "hover:bg-orange-50 dark:hover:bg-zinc-700"
+                    }`}
+                  >
+                    {t("Hebrew")}
+                  </button>
+                </li>
+              </ul>
+            )}
+          </div>
+
+          {/* Profile Dropdown */}
           <div className="relative ml-2">
             <button
               onClick={() => handleDropdown("profile")}
